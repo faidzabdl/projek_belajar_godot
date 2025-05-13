@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5tqptg8igmmr"]
+
+[ext_resource type="Script" path="res://script/enemy_bat.gd" id="1_jypyx"]
+[ext_resource type="Texture2D" uid="uid://daie4psjy24xl" path="res://assets/images/enemy/bat/SpriteSheet.png" id="1_scfhp"]
+[ext_resource type="Texture2D" uid="uid://dduu8v2k4nqt3" path="res://assets/images/ui/Ammokunai.png" id="3_jwi73"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpljw"]
+atlas = ExtResource("1_scfhp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utt6k"]
+atlas = ExtResource("1_scfhp")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrwle"]
+atlas = ExtResource("1_scfhp")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf47v"]
+atlas = ExtResource("1_scfhp")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ibe8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpljw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utt6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrwle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf47v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qv0d"]
+radius = 6.08276
+
+[node name="enemy_bat" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_jypyx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0ibe8")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.600852
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8qv0d")
+
+[node name="panah" type="Sprite2D" parent="."]
+position = Vector2(-2.84217e-14, -9)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_jwi73")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

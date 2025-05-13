@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://btkpbuckfcwy6"]
+
+[ext_resource type="Texture2D" uid="uid://dmotfymiwsqpa" path="res://assets/images/enemy/bear/SpriteSheet.png" id="1_nlf5x"]
+[ext_resource type="Script" path="res://script/enemy_bear.gd" id="1_qrjcm"]
+[ext_resource type="Texture2D" uid="uid://dduu8v2k4nqt3" path="res://assets/images/ui/Ammokunai.png" id="3_yvvof"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm7hx"]
+atlas = ExtResource("1_nlf5x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogx61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm7hx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rbwxa"]
+radius = 7.0
+height = 14.0
+
+[node name="bear" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_qrjcm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ogx61")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_rbwxa")
+
+[node name="panah" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_yvvof")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

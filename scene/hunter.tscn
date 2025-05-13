@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckjxy2qjhiwbr"]
+
+[ext_resource type="Texture2D" uid="uid://ca2icc8vdwijg" path="res://assets/images/character/hunter/SeparateAnim/Idle.png" id="1_e6k3t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b661"]
+atlas = ExtResource("1_e6k3t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vahpb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b661")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xq2fb"]
+radius = 6.0
+height = 14.0
+
+[node name="hunter" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_vahpb")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+shape = SubResource("CapsuleShape2D_xq2fb")

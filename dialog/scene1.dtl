@@ -1,0 +1,9 @@
+hunter: halo, apa kabar ?
+- baik
+	hunter: senang mendengarnya
+	[end_timeline]
+- cukup buruk
+	hunter: begitu...
+	[wait time="2.0"]
+	hunter: kuharap semuanya baik-baik saja
+	[end_timeline]
