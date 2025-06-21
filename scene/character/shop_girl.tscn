@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6os14hexlook"]
+
+[ext_resource type="Texture2D" uid="uid://dr5ml64tai8l1" path="res://assets/images/character/Cavegirl2/SeparateAnim/Attack.png" id="1_rgqkn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7wb1"]
+atlas = ExtResource("1_rgqkn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5lqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7wb1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dcik"]
+radius = 6.0
+height = 13.0
+
+[node name="shopGirl" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(4, 4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y5lqp")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 1.5)
+shape = SubResource("CapsuleShape2D_7dcik")

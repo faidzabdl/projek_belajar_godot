@@ -7,3 +7,4 @@ hunter: halo, apa kabar ?
 	[wait time="2.0"]
 	hunter: kuharap semuanya baik-baik saja
 	[end_timeline]
+[signal arg="belu"]

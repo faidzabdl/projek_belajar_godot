@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dntujas32jrm3"]
+
+[ext_resource type="FontFile" uid="uid://dsd7pb48tba7t" path="res://assets/images/ui/Font/NormalFont.ttf" id="1_mp23u"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_mp23u")

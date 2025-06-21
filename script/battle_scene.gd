@@ -121,6 +121,7 @@ func enemy_attack():
 	var serangan = min(Global.hpPlayer, 10)
 	Global.hpPlayer -= serangan
 	hpPlayer.text = "HP : " + str(Global.hpPlayer)
+	Global.shake(player)
 	player.modulate = Color.RED
 	await get_tree().create_timer(2.0).timeout
 	player.modulate = Color(1,1,1)
@@ -148,6 +149,7 @@ func checkWin():
 		death.play()
 		await get_tree().create_timer(3.0).timeout
 		Global.player_on_battle = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		get_tree().change_scene_to_file("res://scene/main_node.tscn")
 	elif enemyHidup.size() == 0:
 		label.text = "selamat ANDA MENANG !!!"
@@ -155,6 +157,7 @@ func checkWin():
 		succes.play()
 		await get_tree().create_timer(3.0).timeout
 		Global.player_on_battle = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		get_tree().change_scene_to_file("res://scene/main_node.tscn")
 								
 func enemyDied():

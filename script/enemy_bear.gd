@@ -25,10 +25,14 @@ func _on_area_2d_body_entered(body) -> void:
 	pass # Replace with function body.
 	
 func take_damage(amount: int):
+	Global.attack = false
 	var damage = min(hp, amount)
 	hp -= damage
+	Global.shake(self)
+	modulate = Color.RED
+	await get_tree().create_timer(1.0).timeout
+	modulate = Color.WHITE
 	emit_signal("hp_changed", hp)
-	Global.attack = false
 	if hp <= 0: hp = 0
 	if hp == 0: 
 		#modulate = Color.GRAY
@@ -50,7 +54,6 @@ func _on_area_2d_mouse_exited() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Global.attack == true:
 		if event is InputEventMouseButton and event.is_pressed():
-			print("enemy di klik")
+			$panah.visible = false
 			take_damage(50)
-			print(hp)
 	pass # Replace with function body.

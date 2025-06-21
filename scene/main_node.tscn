@@ -1,7 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://l35rk0nfunxe"]
+[gd_scene load_steps=35 format=3 uid="uid://l35rk0nfunxe"]
 
 [ext_resource type="Script" path="res://script/main_node.gd" id="1_ewugg"]
+[ext_resource type="PackedScene" uid="uid://8igpsex71mcg" path="res://scene/UI/ui.tscn" id="2_cts6y"]
 [ext_resource type="Texture2D" uid="uid://73uskerngdn5" path="res://assets/images/CrateEmpty.png" id="2_ocaym"]
+[ext_resource type="PackedScene" uid="uid://dnbgiwgkeb840" path="res://scene/animasiTransisi.tscn" id="2_tmt4y"]
 [ext_resource type="Texture2D" uid="uid://bk6hrsgdlno2f" path="res://assets/tilemap/TilesetHouse.png" id="4_mpmyi"]
 [ext_resource type="Script" path="res://script/rigid_body_2d.gd" id="5_4vewp"]
 [ext_resource type="Texture2D" uid="uid://ddo0mly0wj1i0" path="res://assets/tilemap/TilesetNature.png" id="5_a2oh2"]
@@ -2095,12 +2097,52 @@ size = Vector2(15, 17.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6wav"]
 size = Vector2(10, 11.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5l4a"]
+size = Vector2(20, 22)
+
 [node name="MainNode" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(4, 0)
+position = Vector2(4, -1)
 script = ExtResource("1_ewugg")
 metadata/_edit_vertical_guides_ = [-7.0, 2094.0, 1171.0, -7.0, -7.0]
 metadata/_edit_horizontal_guides_ = [-18.0, -18.0, 1044.0, -109.0, -15.0, 655.0]
+
+[node name="UI" parent="." instance=ExtResource("2_cts6y")]
+z_index = 1
+
+[node name="ColorRect" parent="UI" index="0"]
+color = Color(0.61863, 0.640941, 1, 1)
+
+[node name="Menu" parent="UI" index="1"]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 447.5
+offset_top = 205.5
+offset_right = 447.5
+offset_bottom = 205.5
+
+[node name="VBoxContainer" parent="UI/Menu" index="0"]
+offset_left = 39.0
+offset_top = 28.0
+offset_right = 233.0
+offset_bottom = 174.0
+
+[node name="Player" parent="UI" index="2"]
+offset_top = 195.5
+offset_bottom = 452.5
+
+[node name="Inventory" parent="UI" index="4"]
+offset_left = 393.0
+offset_top = -275.0
+offset_right = 721.0
+offset_bottom = -27.0
+
+[node name="Control" parent="." instance=ExtResource("2_tmt4y")]
+visible = false
+z_index = 1
 
 [node name="Player" parent="." instance=ExtResource("7_aylx7")]
 position = Vector2(1034, 281)
@@ -2213,7 +2255,7 @@ rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_hin2p")
 
 [node name="SceneTrigger" parent="." instance=ExtResource("14_tpmag")]
-position = Vector2(536, 38)
+position = Vector2(552, 42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
 position = Vector2(3, 0)
@@ -2234,10 +2276,13 @@ script = ExtResource("13_kwj37")
 position = Vector2(542, 56)
 
 [node name="rumah1" type="Marker2D" parent="EntranceMarkers"]
-position = Vector2(-3, 1)
+position = Vector2(13, 7)
 
 [node name="map2" type="Marker2D" parent="EntranceMarkers"]
 position = Vector2(551, 8)
+
+[node name="shop" type="Marker2D" parent="EntranceMarkers"]
+position = Vector2(91, 6)
 
 [node name="SceneTrigger2" parent="." instance=ExtResource("14_tpmag")]
 position = Vector2(1123, 64)
@@ -2260,7 +2305,7 @@ scale = Vector2(1.5, 1.5)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_6arao")
-autoplay = true
+parameters/looping = true
 
 [node name="enemy_bat" parent="." instance=ExtResource("17_cflou")]
 position = Vector2(461, 80)
@@ -2276,6 +2321,19 @@ position = Vector2(118, 234)
 [node name="Bat" type="Marker2D" parent="markerSetelahFight"]
 position = Vector2(489, 81)
 
+[node name="SceneTrigger3" parent="." instance=ExtResource("14_tpmag")]
+position = Vector2(629, 44)
+connected_scene = "shop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger3"]
+position = Vector2(5, -2)
+shape = SubResource("RectangleShape2D_x5l4a")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(581, 322)
+
 [connection signal="body_entered" from="Dialog" to="Dialog" method="_on_body_entered"]
 
+[editable path="UI"]
+[editable path="Control"]
 [editable path="Player"]

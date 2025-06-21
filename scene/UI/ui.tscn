@@ -1,0 +1,323 @@
+[gd_scene load_steps=20 format=3 uid="uid://8igpsex71mcg"]
+
+[ext_resource type="StyleBox" uid="uid://b3s2euh7xpihe" path="res://assets/tres/hover_button.tres" id="1_gh72a"]
+[ext_resource type="Texture2D" uid="uid://c1di72f1ny72n" path="res://assets/images/ui/7.png" id="2_5gw60"]
+[ext_resource type="Script" path="res://scene/UI/uiMenu.gd" id="2_syp2l"]
+[ext_resource type="Texture2D" uid="uid://cqtx2p4y1iogt" path="res://assets/images/ui/5.png" id="3_p21xd"]
+[ext_resource type="Texture2D" uid="uid://ma4d6o51bppl" path="res://assets/images/ui/6.png" id="5_0tqbs"]
+[ext_resource type="Theme" uid="uid://dntujas32jrm3" path="res://scene/UI/label_item.tres" id="6_3lxyd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1loc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yewt1"]
+bg_color = Color(0.17249, 0.414747, 0.528141, 1)
+border_width_bottom = 10
+border_color = Color(0.172549, 0.415686, 0.529412, 1)
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 8
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_size = 8
+
+[sub_resource type="Theme" id="Theme_lgy4u"]
+Button/font_sizes/font_size = 26
+Button/styles/focus = SubResource("StyleBoxEmpty_p1loc")
+Button/styles/hover = ExtResource("1_gh72a")
+Button/styles/normal = SubResource("StyleBoxFlat_yewt1")
+
+[sub_resource type="FontVariation" id="FontVariation_npaej"]
+
+[sub_resource type="Theme" id="Theme_bpc1w"]
+default_font = SubResource("FontVariation_npaej")
+default_font_size = 20
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_tx1lv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(447.5, 205.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(382, 195.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Inventory:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(393, -275)]
+}
+
+[sub_resource type="Animation" id="Animation_66fyb"]
+resource_name = "geser kanan"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(447.5, 205.5), Vector2(1546, 211)]
+}
+
+[sub_resource type="Animation" id="Animation_svxet"]
+resource_name = "geser_atas_inven"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(412, 200), Vector2(393, -275)]
+}
+
+[sub_resource type="Animation" id="Animation_kcu8n"]
+resource_name = "geser_bawah_inven"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(393, -275), Vector2(412, 200)]
+}
+
+[sub_resource type="Animation" id="Animation_m0bg4"]
+resource_name = "geser_kanan_player"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.37893, 1),
+"update": 0,
+"values": [Vector2(-391, 187), Vector2(382, 195.5)]
+}
+
+[sub_resource type="Animation" id="Animation_67bvp"]
+resource_name = "geser_kiri"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1168, 197), Vector2(447.5, 205.5)]
+}
+
+[sub_resource type="Animation" id="Animation_3yxlg"]
+resource_name = "geser_kiri_player"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.6),
+"transitions": PackedFloat32Array(0.287174, 0.0915055),
+"update": 0,
+"values": [Vector2(382, 195.5), Vector2(-391, 187)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocxkm"]
+_data = {
+"RESET": SubResource("Animation_tx1lv"),
+"geser kanan": SubResource("Animation_66fyb"),
+"geser_atas_inven": SubResource("Animation_svxet"),
+"geser_bawah_inven": SubResource("Animation_kcu8n"),
+"geser_kanan_player": SubResource("Animation_m0bg4"),
+"geser_kiri": SubResource("Animation_67bvp"),
+"geser_kiri_player": SubResource("Animation_3yxlg")
+}
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_lgy4u")
+script = ExtResource("2_syp2l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -342.0
+offset_top = -267.0
+offset_right = 1439.0
+offset_bottom = 894.0
+color = Color(0, 0, 0, 0.537255)
+
+[node name="Menu" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.5
+offset_top = -118.5
+offset_right = 128.5
+offset_bottom = 118.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5gw60")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -68.5
+offset_right = 97.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "INVENTORY"
+
+[node name="Player" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "PLAYER"
+
+[node name="Quit" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "BACK"
+
+[node name="Player" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 382.0
+offset_top = -128.5
+offset_right = 770.0
+offset_bottom = 128.5
+grow_vertical = 2
+texture = ExtResource("3_p21xd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player"]
+layout_mode = 1
+offset_left = 13.0
+offset_top = 27.5
+offset_right = 53.0
+offset_bottom = 104.5
+theme = SubResource("Theme_bpc1w")
+
+[node name="nama" type="Label" parent="Player/VBoxContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="hp" type="Label" parent="Player/VBoxContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="mp" type="Label" parent="Player/VBoxContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="gold" type="Label" parent="Player/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Player"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 230.0
+offset_top = 28.0
+offset_right = 375.0
+offset_bottom = 224.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ocxkm")
+}
+
+[node name="Inventory" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -599.0
+offset_right = 145.0
+offset_bottom = -351.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0tqbs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 54.0
+offset_bottom = 54.0
+
+[node name="item" type="HBoxContainer" parent="Inventory/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_3lxyd")
+
+[connection signal="pressed" from="Menu/VBoxContainer/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Player" to="." method="_on_player_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

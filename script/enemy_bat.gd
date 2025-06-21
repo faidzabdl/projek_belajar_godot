@@ -23,6 +23,7 @@ func _on_area_2d_body_entered(body) -> void:
 	Global.enemy = "res://scene/enemy/enemy_bat.tscn"
 	Global.player = "res://scene/player.tscn"
 	Global.player_on_battle = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file(battle_scene)
 	pass # Replace with function body.	
 
@@ -35,6 +36,7 @@ func take_damage(amount: int):
 	Global.attack = false
 	var damage = min(hp, amount)
 	hp -= damage
+	Global.shake(self)
 	modulate = Color.RED
 	await get_tree().create_timer(1.0).timeout
 	modulate = Color.WHITE

@@ -1,6 +1,9 @@
 class_name Player extends CharacterBody2D
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var Uimenu: Control = $"../UI"
+@onready var camera: Camera2D = $"../Camera2D"
+@onready var camera_2d_2: Camera2D = $"../Camera2D2"
 
 
 func _ready() -> void:
@@ -8,8 +11,15 @@ func _ready() -> void:
 	Global.maxHpPlayer = 100	
 	pass
 	
-func _input(event: InputEvent) -> void:
-	pass
+#func _input(event: InputEvent) -> void:
+	#if(Input.is_action_just_pressed("ui_cancel") ):
+		##Global.posisiTerakhir = self.global_position
+		##get_tree().change_scene_to_file("res://scene/UI/ui.tscn")
+		#Uimenu.visible = true
+		#camera_2d_2.make_current()	
+		#
+	#pass
+	
 
 func _physics_process(delta) -> void:
 	#if Input.is_action_just_pressed("ui_accept"):
@@ -31,6 +41,7 @@ func _physics_process(delta) -> void:
 		if ( Input.is_action_pressed("ui_accept")):
 			if (  Input.is_action_pressed("ui_up")):
 				velocity = Vector2(velocity.x, -200)
+				
 				pass
 			if (  Input.is_action_pressed("ui_down"))	:
 				velocity = Vector2(velocity.x, 200)
