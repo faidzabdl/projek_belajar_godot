@@ -589,6 +589,18 @@ layout_mode = 2
 text = "Deffend
 "
 
+[node name="Item" type="Button" parent="CanvasLayer/MenuAttack/VBoxContainer"]
+layout_mode = 2
+text = "Item
+"
+
+[node name="Items" type="VBoxContainer" parent="CanvasLayer/MenuAttack"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 1.0
+offset_right = 161.0
+offset_bottom = 41.0
+
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 19.0
 offset_top = 512.0
@@ -631,3 +643,4 @@ limit_right = 1154
 limit_bottom = 647
 
 [connection signal="pressed" from="CanvasLayer/MenuAttack/VBoxContainer/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuAttack/VBoxContainer/Item" to="." method="_on_item_pressed"]

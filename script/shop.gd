@@ -6,7 +6,8 @@ extends Node2D
 @onready var entrance_markers: Node2D = $EntranceMarkers
 @onready var qtyDibeli: SpinBox = $item/SpinBox
 @onready var gold: Label = $item/gold
-
+#var hp
+var effect
 var hargaJual
 var itemDibeli
 var iconDibeli
@@ -68,7 +69,7 @@ func _on_beli_pressed() -> void:
 	goldPlayer -= (hargaJual * qtyDibeli.value)
 	gold.text = str(goldPlayer)
 	Global.playerD["gold"] = goldPlayer	
-	Global.setItem(itemDibeli, qtyDibeli.value, iconDibeli)
+	Global.setItem(itemDibeli, qtyDibeli.value, iconDibeli, effect)
 	print("berhasil di masukkan")
 	hargaJual = null
 	itemDibeli = null
@@ -83,6 +84,8 @@ func _on_potion_pressed() -> void:
 	hargaJual = 5
 	itemDibeli = "potion"
 	iconDibeli = "res://assets/images/ui/Potion/Medipack.png"
+	effect = func():
+		Global.playerD["hp"] += 10
 	pass # Replace with function body.
 
 

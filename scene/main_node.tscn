@@ -1,9 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://l35rk0nfunxe"]
+[gd_scene load_steps=39 format=3 uid="uid://l35rk0nfunxe"]
 
 [ext_resource type="Script" path="res://script/main_node.gd" id="1_ewugg"]
 [ext_resource type="PackedScene" uid="uid://8igpsex71mcg" path="res://scene/UI/ui.tscn" id="2_cts6y"]
 [ext_resource type="Texture2D" uid="uid://73uskerngdn5" path="res://assets/images/CrateEmpty.png" id="2_ocaym"]
 [ext_resource type="PackedScene" uid="uid://dnbgiwgkeb840" path="res://scene/animasiTransisi.tscn" id="2_tmt4y"]
+[ext_resource type="PackedScene" uid="uid://2ec4wh1misxh" path="res://scene/UI/daynightcycle_ui.tscn" id="2_wxjgl"]
 [ext_resource type="Texture2D" uid="uid://bk6hrsgdlno2f" path="res://assets/tilemap/TilesetHouse.png" id="4_mpmyi"]
 [ext_resource type="Script" path="res://script/rigid_body_2d.gd" id="5_4vewp"]
 [ext_resource type="Texture2D" uid="uid://ddo0mly0wj1i0" path="res://assets/tilemap/TilesetNature.png" id="5_a2oh2"]
@@ -20,6 +21,9 @@
 [ext_resource type="AudioStream" uid="uid://k61djy8wh02o" path="res://audio/1 - Adventure Begin.ogg" id="16_6arao"]
 [ext_resource type="PackedScene" uid="uid://b5tqptg8igmmr" path="res://scene/enemy/enemy_bat.tscn" id="17_cflou"]
 [ext_resource type="PackedScene" uid="uid://btkpbuckfcwy6" path="res://scene/enemy/enemy_bear.tscn" id="18_rdesn"]
+[ext_resource type="Script" path="res://script/daynightcycle.gd" id="22_ry1f5"]
+[ext_resource type="Texture2D" uid="uid://3dc432jkgerm" path="res://assets/tres/daynightcycle-gradient-texture.tres" id="23_kdrc4"]
+[ext_resource type="PackedScene" uid="uid://cidqxnu45snxe" path="res://scene/SoundMachine.tscn" id="24_ch8aj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p4t1c"]
 texture = ExtResource("6_cj0hx")
@@ -2107,7 +2111,12 @@ script = ExtResource("1_ewugg")
 metadata/_edit_vertical_guides_ = [-7.0, 2094.0, 1171.0, -7.0, -7.0]
 metadata/_edit_horizontal_guides_ = [-18.0, -18.0, 1044.0, -109.0, -15.0, 655.0]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DayNightCycleUI" parent="CanvasLayer" instance=ExtResource("2_wxjgl")]
+
 [node name="UI" parent="." instance=ExtResource("2_cts6y")]
+visible = false
 z_index = 1
 
 [node name="ColorRect" parent="UI" index="0"]
@@ -2331,6 +2340,13 @@ shape = SubResource("RectangleShape2D_x5l4a")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(581, 322)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.145699, 0.238517, 0.632759, 1)
+script = ExtResource("22_ry1f5")
+gradient_texture = ExtResource("23_kdrc4")
+
+[node name="Node" parent="." instance=ExtResource("24_ch8aj")]
 
 [connection signal="body_entered" from="Dialog" to="Dialog" method="_on_body_entered"]
 

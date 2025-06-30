@@ -1,4 +1,5 @@
 extends Node
+
 var item = {}
 
 var enemy
@@ -50,6 +51,11 @@ func _process(delta):
 	#else:
 		#print("tidak ada item")		  
 	
+	
+	#print(playerD["hp"])		
+		
+		
+	
 	if target_node != null:
 		shake_time -= delta
 		if shake_time > 0:
@@ -73,9 +79,10 @@ func shake(node: Node2D, duration = 0.2, intensity = 5.0):
 #item
 
 
-func setItem(name: String, qty: int, icon: String):
+func setItem(name: String, qty: int, icon: String, effect):
 	if item.has(name):
 		item[name]["qty"] += qty
 	else:	
-		item[name] = {"name": name, "qty": qty, "icon": icon}
+		item[name] = {"name": name, "qty": qty, "icon": icon, "effect": effect}
 	pass
+		

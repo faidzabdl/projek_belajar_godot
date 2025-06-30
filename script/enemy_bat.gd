@@ -24,6 +24,7 @@ func _on_area_2d_body_entered(body) -> void:
 	Global.player = "res://scene/player.tscn"
 	Global.player_on_battle = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Global.posisiSetelahFight = global_position
 	get_tree().change_scene_to_file(battle_scene)
 	pass # Replace with function body.	
 

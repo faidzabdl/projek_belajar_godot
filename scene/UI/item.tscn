@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cil4ull4g518w"]
+
+[ext_resource type="Script" path="res://script/item.gd" id="1_7o62v"]
+
+[node name="Item" type="Button"]
+script = ExtResource("1_7o62v")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

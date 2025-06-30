@@ -2,7 +2,7 @@ extends Camera2D
 
 const SCREEN_SIZE := Vector2(320, 180)
 var cur_screen := Vector2(0,0)
-@onready var player: Player = scene_manager.player
+@onready var player: Player = preload("res://scene/player.tscn").instantiate()
 @export var follow_node: Node2D
 
 func _ready():

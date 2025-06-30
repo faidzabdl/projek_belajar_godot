@@ -7,6 +7,10 @@ var hpPlayer
 @onready var label: Label = $CanvasLayer/Label
 @onready var attackButton: Button = $CanvasLayer/MenuAttack/VBoxContainer/Attack
 
+var itemButtonScene = preload("res://scene/UI/item.tscn")
+@onready var items: VBoxContainer = $CanvasLayer/MenuAttack/Items
+
+
 @onready var enemy_container: VBoxContainer = $CanvasLayer/StatusEnemy/VBoxContainer
 @onready var button_container: VBoxContainer = $CanvasLayer/VBoxContainer
 @onready var audio_stream_bgm: AudioStreamPlayer = $AudioStreamPlayer
@@ -30,6 +34,7 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(1.0).timeout
 	audio_stream_bgm.play()
+	items.visible = false
 	giliran = 1	
 	enemyName = $CanvasLayer/StatusEnemy/VBoxContainer/nama
 	hpEnemyBat = $CanvasLayer/StatusEnemy/VBoxContainer/Hp
@@ -53,13 +58,8 @@ func _ready() -> void:
 
 #batas ready yee ehehehe
 
-#func _process(delta):
-	#print("enemy: %d " % [enemies.size()])
-	#print("Turn: %d" % [Turn.size()])
-	#print("giliran " + str(giliran) )
-	#print(labels.size())
-	#print("banyak nya player dan musuh " + str(Turn.size()) )	
-	
+func _process(delta):
+	pass
 
 		
 func enemy_alive():
@@ -79,9 +79,9 @@ func spawn():
 		$area_player.add_child(init_scene_p)
 		hpPlayer.text = "HP : " + str(Global.hpPlayer)
 	
-	for i in range(randi_range(1,3)):
+	for i in range(randi_range(1,1)):
 			var init_scene_e = load_scene_e.instantiate()
-			Global.posisiSetelahFight = init_scene_e.nama
+			#Global.posisiSetelahFight = init_scene_e.nama
 			print(Global.posisiSetelahFight)
 			init_scene_e.position = Vector2(50 + i * 150, 20)
 			init_scene_e.scale = Vector2(8,8)
@@ -118,9 +118,9 @@ func _on_attack_pressed() -> void:
 
 func enemy_attack():
 	await get_tree().create_timer(3.0).timeout
-	var serangan = min(Global.hpPlayer, 10)
-	Global.hpPlayer -= serangan
-	hpPlayer.text = "HP : " + str(Global.hpPlayer)
+	var serangan = min(Global.playerD["hp"], 10)
+	Global.playerD["hp"] -= serangan
+	hpPlayer.text = "HP : " + str(Global.playerD["hp"])
 	Global.shake(player)
 	player.modulate = Color.RED
 	await get_tree().create_timer(2.0).timeout
@@ -181,3 +181,20 @@ func enemyDied():
 			#labels.erase(labels[label_remove])
 			enemies.remove_at(i)
 			Turn.remove_at(Turn.size() - 1)		
+
+
+func _on_item_pressed() -> void:
+	items.visible = true
+	spawnItem()
+	pass # Replace with function body.
+
+func spawnItem():
+	for item_name in Global.item.keys():
+		var itemButton = itemButtonScene.instantiate()
+		itemButton.item_name = item_name
+		items.add_child(itemButton)	
+		itemButton.connect("change", Callable(self, "update_player"))
+		
+func update_player():
+	hpPlayer.text = "HP : " + str(Global.playerD["hp"])
+	print("tes ke 5")		

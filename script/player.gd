@@ -11,14 +11,15 @@ func _ready() -> void:
 	Global.maxHpPlayer = 100	
 	pass
 	
-#func _input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	#if(Input.is_action_just_pressed("ui_cancel") ):
 		##Global.posisiTerakhir = self.global_position
 		##get_tree().change_scene_to_file("res://scene/UI/ui.tscn")
 		#Uimenu.visible = true
 		#camera_2d_2.make_current()	
 		#
-	#pass
+				
+	pass
 	
 
 func _physics_process(delta) -> void:

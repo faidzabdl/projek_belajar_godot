@@ -6,18 +6,25 @@ class_name BasedScene extends Node
 
 
 func _ready():
-	if Global.posisiTerakhir:
-		player.global_position = Global.posisiTerakhir
-		Global.posisiTerakhir = null
+	#if Global.posisiTerakhir:
+		#player.global_position = Global.posisiTerakhir
+		#Global.posisiTerakhir = null
 	if scene_manager.player:
 		if player:
 			player.queue_free()
 			
 		player = scene_manager.player
-		add_child(player)	
-		player.name = "Player"
+		if is_instance_valid(player):
+			add_child(player)	
+			player.name = "Player"
 		
-		call_deferred("position_player")
+			call_deferred("position_player")
+		else: 
+			player = preload("res://scene/player.tscn").instantiate()
+			add_child(player)
+			player.name = "Player"	
+			print(Global.posisiTerakhir)
+			player.global_position = Global.posisiSetelahFight
 	
 		
 func position_player() -> void:
