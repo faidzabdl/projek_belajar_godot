@@ -21,11 +21,15 @@ var past_minute:int= -1
 
 
 func _ready() -> void:
-	time = INGAME_TO_REAL_MINUTE_DURATION * MINUTES_PER_HOUR * INITIAL_HOUR
-
+	if !Global.timeGlobal:
+		time = INGAME_TO_REAL_MINUTE_DURATION * MINUTES_PER_HOUR * INITIAL_HOUR
+	else:
+		time = Global.timeGlobal
 
 func _process(delta: float) -> void:
+	
 	time += delta * INGAME_TO_REAL_MINUTE_DURATION * INGAME_SPEED
+	Global.timeGlobal = time
 	
 	var value = (sin(time - PI / 2.0) + 1.0) / 2.0
 	self.color = gradient_texture.gradient.sample(value)

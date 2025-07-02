@@ -8,3 +8,4 @@ hunter: halo, apa kabar ?
 	hunter: kuharap semuanya baik-baik saja
 	[end_timeline]
 [signal arg="belu"]
+jump scene1/

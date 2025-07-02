@@ -35,6 +35,8 @@ func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 	audio_stream_bgm.play()
 	items.visible = false
+	spawnItem()
+	
 	giliran = 1	
 	enemyName = $CanvasLayer/StatusEnemy/VBoxContainer/nama
 	hpEnemyBat = $CanvasLayer/StatusEnemy/VBoxContainer/Hp
@@ -77,7 +79,7 @@ func spawn():
 		init_scene_p.scale = Vector2(8,8)
 		player = init_scene_p
 		$area_player.add_child(init_scene_p)
-		hpPlayer.text = "HP : " + str(Global.hpPlayer)
+		hpPlayer.text = "HP : " + str(Global.playerD["hp"])
 	
 	for i in range(randi_range(1,1)):
 			var init_scene_e = load_scene_e.instantiate()
@@ -184,8 +186,10 @@ func enemyDied():
 
 
 func _on_item_pressed() -> void:
-	items.visible = true
-	spawnItem()
+	if items.visible == false:
+		items.visible = true
+	elif items.visible == true:
+		items.visible = false
 	pass # Replace with function body.
 
 func spawnItem():

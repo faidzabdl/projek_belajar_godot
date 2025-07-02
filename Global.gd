@@ -50,10 +50,8 @@ func _process(delta):
 			#print("nama: ", item_data.name, "Qty: ", item_data.qty)
 	#else:
 		#print("tidak ada item")		  
+	 
 	
-	
-	#print(playerD["hp"])		
-		
 		
 	
 	if target_node != null:
@@ -85,4 +83,9 @@ func setItem(name: String, qty: int, icon: String, effect):
 	else:	
 		item[name] = {"name": name, "qty": qty, "icon": icon, "effect": effect}
 	pass
+	
+
+#waktu
+
+var timeGlobal	
 		

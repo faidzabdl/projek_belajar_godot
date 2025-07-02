@@ -94,5 +94,7 @@ func _on_milk_pressed() -> void:
 	hargaJual = 2
 	itemDibeli = "milk"
 	iconDibeli = "res://assets/images/ui/Potion/MilkPot.png"
+	effect = func():
+		Global.playerD["hp"] += 5
 	pass # Replace with function body.
 	
