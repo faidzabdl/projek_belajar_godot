@@ -43,7 +43,7 @@ This project is currently **In Development**. More content and gameplay systems 
 
 ## 🛠 Engine
 
-* GDevelop
+* Godot Engine
 
 ## 📷 Screenshots
 
