@@ -1,34 +1,34 @@
-# 🎮 The Ninja
+# The Ninja
 
 > A 2D top-down RPG with open-world exploration and turn-based combat.
 
-## 📖 About
+## About
 
 This project is a 2D top-down RPG currently in development. Players can freely explore the world, interact with NPCs, purchase items from shops, and battle enemies using a turn-based combat system.
 
-## ✨ Current Features
+##  Current Features
 
-### 🌍 World Exploration
+###  World Exploration
 
 * Explore a 2D top-down world.
 * Freely move around the map and discover different areas.
 
-### 🛒 Shop System
+###  Shop System
 
 * Buy items from the shop.
 * Purchased items are automatically added to the player's inventory.
 
-### 👥 NPC System
+###  NPC System
 
 * NPCs patrol by walking back and forth.
 * Interactive dialogue system with NPCs.
 
-### ⚔️ Turn-Based Combat
+###  Turn-Based Combat
 
 * Battle against **2 different enemy types**.
 * Classic turn-based battle mechanics.
 
-## 🚧 Development Status
+##  Development Status
 
 This project is currently **In Development**. More content and gameplay systems are planned for future updates.
 
@@ -41,19 +41,19 @@ This project is currently **In Development**. More content and gameplay systems 
 * Save & Load
 * Sound effects and background music improvements
 
-## 🛠 Engine
+##  Engine
 
 * Godot Engine
 
-## 📷 Screenshots
+##  Screenshots
 
 > <img width="572" height="371" alt="turnbased" src="https://github.com/user-attachments/assets/fd5d0fbb-891f-4b5d-88e4-da4ac22a4283" />
 
 
-## 🎥 Gameplay
+##  Gameplay
 
 > cooming soon
 
-## 📌 Project Status
+##  Project Status
 
 🟡 Active Development
