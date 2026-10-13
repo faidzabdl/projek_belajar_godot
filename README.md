@@ -47,11 +47,12 @@ This project is currently **In Development**. More content and gameplay systems 
 
 ## 📷 Screenshots
 
-> **
+> <img width="572" height="371" alt="turnbased" src="https://github.com/user-attachments/assets/fd5d0fbb-891f-4b5d-88e4-da4ac22a4283" />
+
 
 ## 🎥 Gameplay
 
-> **
+> cooming soon
 
 ## 📌 Project Status
 
